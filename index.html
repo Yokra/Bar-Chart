@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bar Chart</title>
+    <style>
+        #container{
+            border: 2px solid black;
+            min-height: 10mv;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        #box{
+            background-color: goldenrod;
+            height: 10mv;
+            weight: 10mv;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+
+</div>
+
+<template id="boxtemplate">
+    <div id="box"></div>
+</template>
+
+<script>
+    function createBox(){
+        const.clone = document.querySelector("#boxtemplate").content.cloneNode(true);
+        const box =clone.querySelector("#box");
+
+        box.style.height = height();
+
+        document.querySelector("#counter").appendChild(clone);
+    }
+
+    function createRandomNumber(){
+        const num =(Math.random()) * 100;
+        return num;
+    }
+
+    let counter = 0;
+
+    function createBoxes(){
+        createBox();
+
+        counter++;
+
+        if (counter <10) {
+            createBoxes();
+        }
+    }
+
+</script>
+
+</body>
+</html>
