@@ -9,54 +9,65 @@
     <style>
         #container{
             border: 2px solid black;
-            min-height: 10mv;
+            min-height: 100px;
             display: flex;
             align-items: flex-end;
         }
 
         #box{
-            background-color: goldenrod;
-            height: 10mv;
-            weight: 10mv;
+            background-color: black;
+
         }
     </style>
 </head>
 <body>
 
-<div id="container">
+<div id="container"></div>
 
-</div>
-
-<template id="boxtemplate">
+<template id="box-template">
     <div id="box"></div>
 </template>
 
 <script>
+
+    "use strict";
+
     function createBox(){
-        const clone = document.querySelector("#boxtemplate").content.cloneNode(true);
-        const box =clone.querySelector("#box");
+        const clone = document.querySelector("#box-template").content.cloneNode(true);
+        const box = clone.querySelector("#box");
+        const height = getRandomNumber() + "px";
+        box.style.height = height;
+        box.style.width = "100px";
+        console.log(height);
 
-        box.style.height = height();
+        const elm = document.querySelector("#container").appendChild(clone);
+    }
+    createBox();
 
-        document.querySelector("#counter").appendChild(clone);
+
+
+    function getRandomNumber(){
+        const ran = Math.random() * 100;
+        return ran;
     }
 
-    function createRandomNumber(){
-        const num =(Math.random()) * 100;
-        return num;
-    }
 
-    let counter = 0;
+
 
     function createBoxes(){
-        createBox();
 
-        counter++;
+       let counter = 0;
+       counter++;
 
-        if (counter <10) {
+        if (counter < 40) {
+            //stop
+        } else {
+            //create more boxes
             createBoxes();
         }
+
     }
+
 
 </script>
 
