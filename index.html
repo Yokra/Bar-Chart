@@ -32,6 +32,8 @@
 
     "use strict";
 
+    window.addEventListener("DOMContentLoaded", createBoxes);
+
     function createBox(){
         const clone = document.querySelector("#box-template").content.cloneNode(true);
         const box = clone.querySelector("#box");
@@ -42,7 +44,7 @@
 
         const elm = document.querySelector("#container").appendChild(clone);
     }
-    createBox();
+   // createBox();
 
 
 
@@ -53,20 +55,26 @@
 
 
 
+    let counter = 0;
 
     function createBoxes(){
+        createBox();
 
-       let counter = 0;
        counter++;
 
-        if (counter < 40) {
-            //stop
-        } else {
-            //create more boxes
-            createBoxes();
+        if (counter > 10) {
+            // find the first box
+            const firstDiv = document.querySelector("#container div");
+            // remove it from the HTML
+            firstDiv.remove();
+
         }
 
+        setTimeout(createBoxes, 400);
     }
+
+
+
 
 
 </script>
